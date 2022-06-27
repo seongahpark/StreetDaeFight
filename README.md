@@ -1,4 +1,4 @@
-# Getting Started with StreetDaeFight
+# StreetDaeFight
 <div align="center">
 <img src="https://img.shields.io/badge/fastify-000000?style=flat-square&logo=Fastify&logoColor=white"/>
 <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=Node.js&logoColor=white"/>
