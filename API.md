@@ -1,0 +1,13 @@
+[https://app.swaggerhub.com/apis/seongahpark/PJ1-Vote-API/1.0.0](https://app.swaggerhub.com/apis/seongahpark/PJ1-Vote-API/1.0.0)
+
+
+|Function|Method|Endpoint|Code|request|response|상세 설명|
+|:--|:-----|:-------|:--|:--|:--|:--|
+|선택 내역 조회|GET|/user/promise|200|빈 상태로 전송|[{"_id": 6225a8271da4ae9f6b9a835f","pro_id": "62259cfc40806f664ba02f6d","pres_id": "6221803e67b83b6e5ca47550","choice": false, //반대"user_id": "62255d479e02aadbc32d2882"}...]|헤더의 토큰으로 사용자 인증을 받아 각 사용자의 선택사항을 알수 있음|
+|설문조사지(질문목록) 가져오기|GET|/promise|200|빈 상태로 전송|[{"_id":"6221a1f34aa8a1233a4ce946","pres_id":6221803e67b83b6e5ca47550","cate_id": "622197cd7c798f87678b6985","contents": "플라스틱 제로 사회로 전환"},	...]|각 4명의 후보별 7개의 카테고리 (하나의 카테고리에는 최대 10개의 공약이 있음)에서 하나씩 가져와 총 28개의 설문문항을 생성|
+|대선 후보별 모든 공약 조회하기|GET|/promise/:id|200|빈 상태로 전송|[{"_id": "6221998a4aa8a1233a4ce90c","pres_id": "6221803e67b83b6e5ca47550","cate_id": "622197a74aa8a1233a4ce907","contents": "무기 체계 첨단화, 자주 국방 역량 확충"},	...}]|후보의 id로 구분하여 각 후보의 전체 공약을 조회함|
+|best / worst 결과 조회하기|GET|/user|200|빈 상태로 전송|{"_id":62255d6559bcdbd928f15557","name": "박토토","best_pres": {"_id":"6221803e67b83b6e5ca47550","name": "이재명","party": "더불어민주당"},"worst_pres": {"_id": "6221927c67b83b6e5ca47554","name": "안철수","party": "국민의당"}}|헤더의 토큰으로 사용자 인증을 받아 해당 유저의 best, worst 결과를 조회함|
+|선택 전송하기|POST|/user/promise|201|{"pro_id" : "622198be7c798f87678b6987","pres_id" :"6221807867b83b6e5ca47552","choice" : true or false}|{"value": {"_id": 62255d4b59bcdbd928f15556","name": "나미미"},"ok": 1,}|해당 공약에 대한 찬성(true) 또는 반대(false) 를 담아 전송함|
+|best, worst 만들기|PUT|/user|200|{ "best_pres": { "_id": "62255d6559bcdbd928f15557", "name": "이재명", "party": "더불어민주당" }, "worst_pres": { "_id": "62255d6559bcdbd928f15557", "name": "심상정", "party": "정의당" }}|{"value": {"_id": 62255d6559bcdbd928f15557","name": "박토토","best_pres": {"_id":"6221927c67b83b6e5ca47554","name": "안철수","party": "국민의당"},"worst_pres": {"_id": "6221925467b83b6e5ca47553","name": "심상정","party": "정의당"}},"ok": 1}|유저의 정보에 best, worst 결과를 업데이트함|
+|유저 삭제하기|DELETE|/user|200,404|빈 상태로 전송|if(삭제완료시){{"value": {"_id":"62255d4b59bcdbd928f15556","name": "나미미","best_pres": {"_id": "6221927c67b83b6e5ca47554","name": "안철수","party": "국민의당"},"choice": true,"pres_id":"6221807867b83b6e5ca47552","pro_id":"622198be7c798f87678b6987","worst_pres": {"_id": "6221925467b83b6e5ca47553","name": "심상정","party": "정의당"}},"ok": 1}}else(삭제할 글이 없을시){{"error": "Not Found"}}|유저의 정보 전체 삭제|
+|유저의 설문조사만 삭제하기|DELETE|/user/promise|200,404|빈 상태로 전송|if(삭제완료시){"user_id":"62255d4b59bcdbd928f15556","result": {"acknowledged": true,"deletedCount": 2}}else(삭제할 글이 없을시){{"error": "Not Found"}}|유저의 투표결과만 삭제|

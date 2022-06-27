@@ -1,0 +1,40 @@
+{
+  "name": "devops-01-p1-teamd",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with Fastify-CLI.",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tap \"test/**/*.test.js\"",
+    "start": "fastify start -l info app.js",
+    "dev": "fastify start -w -l info -P app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seongahpark/devops-01-P1-TeamD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seongahpark/devops-01-P1-TeamD/issues"
+  },
+  "homepage": "https://github.com/seongahpark/devops-01-P1-TeamD#readme",
+  "dependencies": {
+    "autoload": "^0.1.2",
+    "body-parser": "^1.19.2",
+    "dotenv": "^16.0.0",
+    "fastify": "^3.0.0",
+    "fastify-autoload": "^3.10.0",
+    "fastify-cli": "^2.15.0",
+    "fastify-mongodb": "^4.1.1",
+    "fastify-plugin": "^3.0.0",
+    "fastify-sensible": "^3.1.2",
+    "process": "^0.11.10"
+  },
+  "devDependencies": {
+    "tap": "^15.1.6"
+  }
+}
